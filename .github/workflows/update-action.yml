@@ -4,17 +4,6 @@ on:
   release:
     types: [released]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm ci
-      - run: npm test
-
-
   update:
     runs-on: ubuntu-latest
     steps:
@@ -53,19 +42,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Npm Install rollup
-        run: |
-          npm install rollup rollup-plugin-terser -D
+        run: npm install rollup rollup-plugin-terser -D
       - name: Npm Install rollup
-        run: |
-          npm install jest -D
+        run: npm install jest -D
       - name: Npm Test
-        run: |
-          npm test
-          echo "npm test complete 🚀"
+        run: npm test
+      - run: echo "npm test complete 🚀"
       - name: Npm Build
-        run: |
-          npm run build
+        run: npm run build
           echo "npm build complete 🚀"
+      - run: echo "npm build complete 🚀"
       - uses: actions/setup-node@v3
         with:
           node-version: 16
