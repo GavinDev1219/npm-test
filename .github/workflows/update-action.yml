@@ -48,7 +48,7 @@ jobs:
           npm run build
           echo "npm build complete 🚀"
       - name: Npm Publish
-        run: npm publish
+        run: |
           npm publish
           echo "npm publish complete 🚀"
         env:
