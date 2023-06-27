@@ -48,8 +48,10 @@ jobs:
           npm run build
           echo "npm build complete 🚀"
       - name: Npm Publish
-        run: |
+        run: npm publish
           npm publish
           echo "npm publish complete 🚀"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
