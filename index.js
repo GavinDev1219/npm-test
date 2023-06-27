@@ -1,1 +1,1 @@
-console.log("Hello, World!");
+console.log("use npm-test package")
