@@ -1,4 +1,5 @@
 name: Update Package Version
+run-name: Run ${{ github.event.release.tag_name }} Action 🚀
 on:
   release:
     types: [released]
@@ -51,11 +52,12 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Npm Install Package
+      - name: Npm Install rollup
         run: |
           npm install rollup rollup-plugin-terser -D
+      - name: Npm Install rollup
+        run: |
           npm install jest -D
-          npm install -g npm-cli-login
       - name: Npm Test
         run: |
           npm test
