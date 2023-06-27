@@ -35,4 +35,21 @@ jobs:
           git push --force origin ${{ github.event.release.tag_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Npm Install Package
+        run: |
+          npm install rollup rollup-plugin-terser -D
+          npm install jest -D
+      - name: Npm Test
+        run: |
+          npm test
+          echo "npm test complete 🚀"
+      - name: Npm Build
+        run: |
+          npm run build
+          echo "npm build complete 🚀"
+      - name: Npm Publish
+        run: |
+          npm publish
+          echo "npm publish complete 🚀"
+
 
