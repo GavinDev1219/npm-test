@@ -1,5 +1,5 @@
 {
-  "name": "@GavinDev1219/npm-test",
+  "name": "@gavindev1219/npm-test",
   "version": "1.0.19",
   "description": "npm test",
   "main": "dist/index.min.js",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/GavinDev1219/npm-test#readme",
   "publishConfig": {
-    "@GavinDev1219:registry": "https://npm.pkg.github.com"
+    "@gavindev1219:registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "jest": "^29.5.0",
