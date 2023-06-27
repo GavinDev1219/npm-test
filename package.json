@@ -1,6 +1,6 @@
 {
   "name": "@GavinDev1219/npm-test",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "npm test",
   "main": "dist/index.min.js",
   "scripts": {
