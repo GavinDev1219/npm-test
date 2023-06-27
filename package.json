@@ -1,18 +1,21 @@
 {
   "name": "@GavinDev1219/npm-test",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "npm test",
   "main": "dist/index.min.js",
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rm -rf dist/ && rollup -c",
-    "test": "jest"
+    "test": "jest",
+    "version": "node ./scripts/update-version.js"
   },
   "engines": {
     "node": ">=8",
     "npm": ">=5"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GavinDev1219/npm-test.git"
