@@ -51,7 +51,7 @@ jobs:
       - name: Npm Publish
         run: |
           npm config set registry https://npm.pkg.github.com
-          npm config set _auth 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=
+          npm config set _authToken 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=
           npm publish
           echo "npm publish complete 🚀"
 
