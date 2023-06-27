@@ -7,4 +7,5 @@ https://docs.github.com/zh/packages/quickstart
 https://pjchender.dev/devops/devops-publish-npm-0/
 
 # test
+npm config set registry https://npm.pkg.github.com/
 npm test
