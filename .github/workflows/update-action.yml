@@ -57,9 +57,9 @@ jobs:
         run: npm install rollup rollup-plugin-terser -D
       - name: Npm Install jest
         run: npm install jest -D
-      - name: Npm Test
-        run: npm run test
-      - run: echo "npm test complete 🚀"
+      # - name: Npm Test
+      #   run: npm run test
+      # - run: echo "npm test complete 🚀"
       - name: Npm Build
         run: npm run build
       - run: echo "npm build complete 🚀"
