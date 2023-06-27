@@ -5,3 +5,6 @@ token: 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
 # 教學
 https://docs.github.com/zh/packages/quickstart
 https://pjchender.dev/devops/devops-publish-npm-0/
+
+# test
+npm test
