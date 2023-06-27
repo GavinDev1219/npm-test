@@ -39,6 +39,7 @@ jobs:
         run: |
           npm install rollup rollup-plugin-terser -D
           npm install jest -D
+          npm install -g npm-cli-login
       - name: Npm Test
         run: |
           npm test
@@ -49,9 +50,9 @@ jobs:
           echo "npm build complete 🚀"
       - name: Npm Publish
         run: |
+          npm config set registry https://npm.pkg.github.com
+          npm config set _auth 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=
           npm publish
           echo "npm publish complete 🚀"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
