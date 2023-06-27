@@ -16,5 +16,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: npm
+      - run: npm install rollup rollup-plugin-terser -D
+      - run: npm install jest -D
+      - run: npm test
       - run: echo "npm test compelete"
