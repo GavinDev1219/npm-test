@@ -48,11 +48,16 @@ jobs:
         run: |
           npm run build
           echo "npm build complete 🚀"
-      - name: Npm Publish
-        run: |
-          npm config set registry https://npm.pkg.github.com
-          npm config set _authToken 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=
-          npm publish
-          echo "npm publish complete 🚀"
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+      - run: |
+          echo "@gavindev1219:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 
