@@ -11,6 +11,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - run: npm config set registry https://registry.npmjs.org/
+      - run: npm ci
       - run: npm test
 
   update:
@@ -60,7 +62,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
       - run: |
           echo "@gavindev1219:registry=https://npm.pkg.github.com" >> .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
