@@ -50,6 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Npm Install
         run: npm install -g npm
+      - run: npm config set registry https://registry.npmjs.org/
       - name: Npm Install rollup
         run: npm install rollup rollup-plugin-terser -D
       - name: Npm Install jest
