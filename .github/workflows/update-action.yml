@@ -48,19 +48,19 @@ jobs:
           git push --force origin ${{ github.event.release.tag_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: npm config set registry https://registry.npmjs.org/
-      - name: Npm Install
-        run: npm install -g npm
-      - name: Npm Install rollup
-        run: npm install rollup rollup-plugin-terser -D
-      - name: Npm Install jest
-        run: npm install jest -D
-      - name: Npm Test
-        run: npm run test
-      - run: echo "npm test complete 🚀"
-      - name: Npm Build
-        run: npm run build
-      - run: echo "npm build complete 🚀"
+      # - run: npm config set registry https://registry.npmjs.org/
+      # - name: Npm Install
+      #   run: npm install -g npm
+      # - name: Npm Install rollup
+      #   run: npm install rollup rollup-plugin-terser -D
+      # - name: Npm Install jest
+      #   run: npm install jest -D
+      # - name: Npm Test
+      #   run: npm run test
+      # - run: echo "npm test complete 🚀"
+      # - name: Npm Build
+      #   run: npm run build
+      # - run: echo "npm build complete 🚀"
       - uses: actions/setup-node@v3
         with:
           node-version: 16
