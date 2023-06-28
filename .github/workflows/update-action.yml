@@ -48,6 +48,8 @@ jobs:
           git push --force origin ${{ github.event.release.tag_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Npm Install
+        run: npm install -g npm
       - name: Npm Install rollup
         run: npm install rollup rollup-plugin-terser -D
       - name: Npm Install jest
