@@ -12,8 +12,6 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-        env:
-            NODE_AUTH_TOKEN: ${{secrets.AUTH_TOKEN}}
       - run: npm test
 
   update:
@@ -22,13 +20,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
       - name: Update package.json
         run: |
           node ./scripts/update-version.js ${{ github.event.release.tag_name }}
         env:
-          GITHUB_TOKEN: ${{ secrets.AUTH_TOKEN }}
-
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Set Git user
         env:
           GITHUB_ACTOR: ${{ github.actor }}
@@ -36,52 +32,41 @@ jobs:
         run: |
           git config --global user.name "${{ env.GITHUB_ACTOR }}"
           git config --global user.email "${{ env.GITHUB_EMAIL }}"
-
       - name: Commit changes
         run: |
           git add .
           git commit -m "Update version to ${{ github.event.release.tag_name }} for release ${{ github.ref }}"
           git_hash=$(git rev-parse --short HEAD)
-
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.AUTH_TOKEN }}
-
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Tag Push changes
         run: |
           git tag -f ${{ github.event.release.tag_name }} $git_hash
           git push --force origin ${{ github.event.release.tag_name }}
         env:
-          GITHUB_TOKEN: ${{ secrets.AUTH_TOKEN }}
-
-      - name: NPM Install rollup
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Npm Install rollup
         run: npm install rollup rollup-plugin-terser -D
-
-      - name: NPM Install jest
+      - name: Npm Install jest
         run: npm install jest -D
-
-      - name: NPM Test
+      - name: Npm Test
         run: npm run test
-
       - run: echo "npm test complete 🚀"
-
-      - name: NPM Build
+      - name: Npm Build
         run: npm run build
-
       - run: echo "npm build complete 🚀"
-
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-
-      - name: NPM Install
-        run: npm ci
-
-      - name: NPM Publish
-        run: npm publish
+      - run: npm ci
+      - run: |
+          echo "@gavindev1219:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+      - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.AUTH_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 
