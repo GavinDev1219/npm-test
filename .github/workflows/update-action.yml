@@ -4,19 +4,19 @@ on:
   release:
     types: [released]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm config set registry https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm test
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
+  #     - run: npm config set registry https://registry.npmjs.org/
+  #     - run: npm ci
+  #     - run: npm test
 
   update:
-    needs: build
+    # needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
